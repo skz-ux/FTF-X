@@ -58,7 +58,7 @@ map = ReplicatedStorage:WaitForChild("CurrentMap")
 
 iswhitelisted = true
 plusaccess = true
-icon = "70605770897445"
+icon = "94239072077284"
 plusicon = "86150877205669"
 theicon = icon
 scriptname = "SKZ"
