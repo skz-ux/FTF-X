@@ -58,7 +58,7 @@ map = ReplicatedStorage:WaitForChild("CurrentMap")
 
 iswhitelisted = true
 plusaccess = true
-icon = "123805858047330"
+icon = "94239072077284"
 plusicon = "86150877205669"
 theicon = icon
 scriptname = "SKZ👾"
@@ -78,7 +78,7 @@ Tabs = {
 	["Visual"] = Window:AddTab({
 		Name = "Visual",
 		Icon = "wallpaper",
-		Description = "créditos: x67 / danger",
+		Description = "Visual Settings",
 	}),
 	["Gadgets"] = Window:AddTab({
 		Name = "Gadgets",
