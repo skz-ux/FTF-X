@@ -68,7 +68,7 @@ scriptname = "SKZ👾"
 
 Window = Library:CreateWindow({
 	Title = scriptname,
-	Footer = "Version 1.0.1",
+	Footer = "Version 2.0",
 	NotifySide = "Right",
 	MobileButtonsSide = "Left",
 	Icon = theicon,
