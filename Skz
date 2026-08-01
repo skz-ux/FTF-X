@@ -68,7 +68,7 @@ scriptname = "SKZ"
 
 Window = Library:CreateWindow({
 	Title = scriptname,
-	Footer = "Version 2.0 / créditos: x67 e danger",
+	Footer = "Version 2.0 / créditos: x67 e skztv157",
 	NotifySide = "Right",
 	MobileButtonsSide = "Left",
 	Icon = theicon,
