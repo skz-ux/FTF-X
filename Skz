@@ -10177,6 +10177,7 @@ task.spawn(function()
 			Library:SetDPIScale(DPI)
 		end,
 	})
+
 	MenuGroup:AddDivider()
 	MenuGroup:AddLabel("Menu bind")
 		:AddKeyPicker("MenuKeybind", { Default = "RightShift", NoUI = true, Text = "Menu keybind" })
