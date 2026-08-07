@@ -10197,6 +10197,88 @@ task.spawn(function()
 		end,
 	})
 
+local settingsPageH = pages["Setting"]
+    local UserInputService = game:GetService("UserInputService")
+    local TweenService = game:GetService("TweenService")
+    local HttpService = game:GetService("HttpService")
+    local Player = game:GetService("Players").LocalPlayer
+    local playerGui = Player:WaitForChild("PlayerGui")
+
+    for _,v in pairs(settingsPageH:GetChildren()) do
+        if v:IsA("Frame") then v:Destroy() end
+    end
+
+    local function GetMainFrame()
+        return frame
+    end
+
+    if not isfolder("FTF_Eclipse") then makefolder("FTF_Eclipse") end
+
+    local backgrounds = {
+        {"Style 1", "76794327841424"}, {"Style 2", "97984932480755"}, {"Style 3", "86192845180549"}, {"Style 4", "85784609294289"},
+        {"Style 5", "140636010520663"}, {"Style 6", "124240486073107"}, {"Style 7", "85635291549219"},
+        {"Style 8", "117512819334968"}, {"Style 9", "111750153717391"}, {"Style 10", "98791036867631"},
+        {"Style 11", "131737959610359"}, {"Style 12", "81997082602790"}, {"Style 13", "117151748213203"},
+        {"Style 14", "112483283923855"}, {"Style 15", "109490272700736"}, {"Style 16", "125661929366351"},
+        {"Style 17", "74184537251110"}, {"Style 18", "124786302962772"}, {"Style 19", "125474858681812"},
+        {"Style 20", "99142368271124"}, {"Style 21", "94865353552525"}, {"Style 22", "120484401704545"},
+        
+    }
+
+    local function SaveConfig()
+        local data = {
+            MenuKeybind = getgenv().MenuKeybind or "K",
+            BackgroundID = getgenv().CustomBackgroundID or "",
+            UIBackground = getgenv().UIBackground or "Style 1",
+            Font = getgenv().UIFont or "GothamBold"
+        }
+        writefile("FTF_Eclipse/config.json", HttpService:JSONEncode(data))
+    end
+
+    local function LoadConfig()
+        if isfile("FTF_Eclipse/config.json") then
+            local data = HttpService:JSONDecode(readfile("FTF_Eclipse/config.json"))
+            getgenv().MenuKeybind = data.MenuKeybind or "K"
+            getgenv().CustomBackgroundID = data.BackgroundID or ""
+            getgenv().UIBackground = data.UIBackground or "Style 1"
+            getgenv().UIFont = data.Font or "GothamBold"
+            return data
+        else
+            getgenv().MenuKeybind = "K"
+            getgenv().UIBackground = "Style 1"
+            getgenv().UIFont = "GothamBold"
+            getgenv().CustomBackgroundID = "rbxassetid://125474858681812"
+            SaveConfig()
+            return nil
+        end
+    end
+
+    LoadConfig()
+
+    local container = Instance.new("Frame", settingsPageH)
+    container.Size = UDim2.new(1, -20, 1, 0)
+    container.Position = UDim2.new(0, 10, 0, 0)
+    container.AutomaticSize = Enum.AutomaticSize.Y
+    container.BackgroundTransparency = 1
+    Instance.new("UIPadding", container).PaddingTop = UDim.new(0, 10)
+    Instance.new("UIListLayout", container).Padding = UDim.new(0, 10)
+
+    local function UpdateBackground(id)
+        local mainFrame = GetMainFrame()
+        if not mainFrame then return end
+        local oldBg = mainFrame:FindFirstChild("CustomBg")
+        if oldBg then oldBg:Destroy() end
+        if id and id ~= "" then
+            local bg = Instance.new("ImageLabel", mainFrame)
+            bg.Name = "CustomBg"
+            bg.Size = UDim2.new(1,0,1,0)
+            bg.BackgroundTransparency = 1
+            bg.Image = "rbxassetid://".. id
+            bg.ImageTransparency = 0.15
+            bg.ScaleType = Enum.ScaleType.Crop
+            bg.ZIndex = 0
+        end
+    end
 	MenuGroup:AddDivider()
 	MenuGroup:AddLabel("Discord")
 	MenuGroup:AddButton("Copy Invite", function()
